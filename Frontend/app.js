@@ -1,40 +1,44 @@
+function myDone(data) {
+    console.log("Done");
+    console.log(data);
+    $("#follower-content").text(data.followerCount);
+}
+function onFail() {
+    console.log("Fail");
+    console.log(e);
+}
 function myCall() { 
     console.log("interval timer...");
-    $.getJSON("./data.json").done(myDone).fail(onFail);
+    $.getJSON("http://localhost:3300/getFollowerCount").done(myDone).fail(onFail);
 }
-
-function myDone(dataJson) {
-    console.log(dataJson.follower);  //chiamiamo follower all'interno del file data.json, quindi stamperà 100 
-}
-
-function onFail(e){
-    console.log(e);       //nel caso di errore, verrà stampato 
-}   
-
 function myInit() {
     console.log("OK!");
     setInterval(myCall, 1000);  //chiama la funzione myCall ogni 1000ms
 }
+// Fetch the initial follower count from the server
+fetch('http://localhost:3300/getFollowerCount')
+.then(response => {
+    // Check if the response status is ok (HTTP status code 200-299)
+    if (!response.ok) {
+        // Handle non-ok responses
+        if (response.status === 404) {
+            // Throw an error if the endpoint is not found
+            throw new Error('Endpoint not found');
+        } else {
+            // Try to get the response body as text for further examination
+                return response.text();
+        }
+    }
+    // If the response is ok, parse it as JSON
+    return response.json();
+})
+.catch(error => console.error(error));
+$(document).ready(myInit);
 
-function loadJSON() {
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            // Estrai il valore della variabile "follower"
-            const followerValue = data.follower;
+document.addEventListener('DOMContentLoaded', function() {
+    // Mostra il contenuto principale
+    document.querySelector('.main-content').style.display = 'block';
 
-            // Ottieni l'elemento HTML in cui desideri stampare il valore
-            const followerContent = document.getElementById('follower-content');
-
-            // Assegna il valore della variabile "follower" all'elemento HTML
-            followerContent.textContent = followerValue;
-        })
-        .catch(error => {
-            console.error('Errore nel caricamento del file JSON:', error);
-        });
-}
-
-// Carica il JSON inizialmente
-loadJSON();
-
-$(document).init(myInit);
+    // Nascondi la pagina di caricamento
+    document.querySelector('.loader-container').style.display = 'none';
+});

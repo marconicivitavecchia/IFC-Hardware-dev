@@ -21,7 +21,7 @@
 }
 
 body {
-    font-family: 'Montserrat';font-size: 30px;
+    font-family: 'Montserrat'; font-size: 30px;
     text-align:center;
 
     background: var(--body-bg);
@@ -29,8 +29,30 @@ body {
     
 }
 
-.image {
-    margin-top: 3%;
+.loader-container {
+    text-align: center;
+}
+
+.logo {
+    width: 100px; /* Personalizza la larghezza del tuo logo */
+    height: 100px; /* Personalizza l'altezza del tuo logo */
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Stile del contenuto principale che sarà nascosto durante il caricamento */
+.main-content {
+    display: none;
 }
 
 .centered-object {
@@ -53,4 +75,17 @@ body {
         background-color:black;
         border: 2px solid white;
     }
+}
+
+.empty-space {
+    height: 800px;
+}
+
+a {color : white}
+
+footer {
+    background-color: darkgrey;
+    color: white;
+    text-align: center;
+    padding: 3px;
 }
