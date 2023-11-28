@@ -10,16 +10,16 @@ const connectUrl = `${protocol}://${host}:${port}`;
 
 // Create an MQTT client instance and connect to the broker
 const client = mqtt.connect(connectUrl, {
-  clientId,
-  clean: true,
-  connectTimeout: 4000,
-  username: 'emqx',
-  password: 'public',
-  reconnectPeriod: 1000,
+  clientId,  // Unique client ID for the MQTT connection
+  clean: true,  // Clean session flag, ensuring no previous session data is used
+  connectTimeout: 4000,  // Timeout for the connection attempt
+  username: 'emqx',  // MQTT broker username
+  password: 'public',  // MQTT broker password
+  reconnectPeriod: 1000,  // Period to attempt reconnection if the connection is lost
 });
 
 // Define the topic to subscribe to
-const topic = 'IFC-Backend/1';
+const topic = '';
 
 // Event handler when the client is successfully connected to the broker
 client.on('connect', () => {

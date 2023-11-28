@@ -5,18 +5,17 @@ function myDone(data) {
 }
 function onFail() {
     console.log("Fail");
-    console.log(e);
 }
 function myCall() { 
     console.log("interval timer...");
-    $.getJSON("http://localhost:3300/getFollowerCount").done(myDone).fail(onFail);
+    $.getJSON("http://localhost:3000/getFollowerCount").done(myDone).fail(onFail);
 }
 function myInit() {
     console.log("OK!");
     setInterval(myCall, 1000);  //chiama la funzione myCall ogni 1000ms
 }
 // Fetch the initial follower count from the server
-fetch('http://localhost:3300/getFollowerCount')
+fetch('http://localhost:3000/getFollowerCount')
 .then(response => {
     // Check if the response status is ok (HTTP status code 200-299)
     if (!response.ok) {
