@@ -12,8 +12,6 @@ certifi==2023.7.22
     # via requests
 charset-normalizer==3.3.1
     # via requests
-colorama==0.4.6
-    # via sphinx
 docutils==0.18.1
     # via
     #   m2r2
@@ -24,17 +22,17 @@ imagesize==1.4.1
     # via sphinx
 importlib-resources==6.1.0
     # via xanadu-sphinx-theme
-jinja2==3.1.2
+jinja2==3.1.3
     # via sphinx
 m2r2==0.3.2
-    # via -r .\requirements.in
+    # via -r requirements.in
 markupsafe==2.1.3
     # via jinja2
 mistune==0.8.4
     # via m2r2
 packaging==23.2
     # via sphinx
-pillow==10.1.0
+pillow==10.2.0
     # via xanadu-sphinx-theme
 pygments==2.16.1
     # via sphinx
@@ -44,7 +42,7 @@ snowballstemmer==2.2.0
     # via sphinx
 sphinx==7.2.6
     # via
-    #   -r .\requirements.in
+    #   -r requirements.in
     #   sphinx-gallery
     #   sphinxcontrib-applehelp
     #   sphinxcontrib-devhelp
@@ -69,4 +67,4 @@ sphinxcontrib-serializinghtml==1.1.9
 urllib3==2.0.7
     # via requests
 xanadu-sphinx-theme==0.5.0
-    # via -r .\requirements.in
+    # via -r requirements.in
